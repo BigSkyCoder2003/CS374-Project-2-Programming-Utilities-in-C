@@ -10,10 +10,11 @@ int main(int argc, char *argv[]){
   int fileopen,fileread;
   if (argc == 1)
   {
-    fileread = read(0,buffer,BUFFER_SIZE);
+    while ((fileread = read(STDIN_FILENO,buffer,BUFFER_SIZE)) > 0){
     write(STDOUT_FILENO,buffer,fileread);
-    return 0;
+    }
   }
+  
 for (int argnum = 1; argnum < argc; argnum++)
 {
 fileopen = open(argv[argnum], O_RDONLY);

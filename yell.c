@@ -11,7 +11,7 @@ int main(int argc, char *argv[]){
   int fileopen,fileread;
   if (argc == 1)
   {
-    fileread = read(STDIN_FILENO,buffer,BUFFER_SIZE);
+    while ((fileread = read(STDIN_FILENO,buffer,BUFFER_SIZE)) > 0){
 
     for(int i = 0; i < fileread; i++)
     {
@@ -21,7 +21,7 @@ int main(int argc, char *argv[]){
     }
 
     write(STDOUT_FILENO,buffer,fileread);
-    return 0;
+    }
   }
 for (int argnum = 1; argnum < argc; argnum++)
 {
